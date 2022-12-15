@@ -18,14 +18,18 @@ Call the playRound function
 
 const choice = ["rock", "paper", "scissors"];
 
+let computerSelection = getComputerChoice();
+
 let playerSelection = prompt("rock, paper, or scissors?");
 playerSelection = playerSelection.toLowerCase();
 
-computerSelection = function getComputerChoice() {
+
+function getComputerChoice() {
     return choice[Math.floor(Math.random() * choice.length)];
 }
 
-function playRound (userSelection,computerSelection) {
+function playRound (playerSelection,computerSelection) {
+    getComputerChoice();
     if (playerSelection === computerSelection) {
         return "it's a tie!";
     } else if (playerSelection === "rock" && computerSelection === "paper") {
@@ -42,3 +46,13 @@ function playRound (userSelection,computerSelection) {
         return "you win! scissor beats paper";
     }
 }
+
+function game() {
+    console.log(playRound(playerSelection, computerSelection));
+}
+
+for (let i = 0; i < 5; i++) {
+    game();
+}
+
+game();

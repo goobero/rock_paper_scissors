@@ -18,6 +18,27 @@ Call the playRound function
 
 const choice = ["rock", "paper", "scissors"];
 
+let playerSelection = prompt("rock, paper, or scissors?");
+playerSelection = playerSelection.toLowerCase();
+
 computerSelection = function getComputerChoice() {
     return choice[Math.floor(Math.random() * choice.length)];
+}
+
+function playRound (userSelection,computerSelection) {
+    if (playerSelection === computerSelection) {
+        return "it's a tie!";
+    } else if (playerSelection === "rock" && computerSelection === "paper") {
+        return "you lose! paper beats rock";
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+        return "you win! rock beats scissors";
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        return "you win! paper beats rock";
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        return "you lose! scissors beat paper";
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+        return "you lose! rock beats scissor";
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        return "you win! scissor beats paper";
+    }
 }

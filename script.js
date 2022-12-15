@@ -55,8 +55,19 @@ function playRound (playerSelection,computerSelection) {
     }
 }
 
-console.log(playRound(playerSelection, computerSelection));
+playRound(playerSelection, computerSelection);
+score(playerScore, computerScore);
 
+function score(playerScore, computerScore) {
+    if (playerScore === computerScore) {
+        console.log("you tied! your score is " + playerScore, "and the computer's score is " + computerScore);
+    } else if (playerScore > computerScore) {
+        console.log("you are the winner! :\) your score is " + playerScore, "and the computer's score is " + computerScore);
+    } else {
+        console.log("you are the loser :\( your score is " + playerScore, "and the computer's score is " + computerScore);
+    }
+}
+    
 /*
 
 Declare a function called game()
@@ -68,12 +79,3 @@ Keep score of wins/losses at the end of each round
 Return a string displaying who the winner or loser is after the 5 rounds end
 
 */
-
-
-function game() {
-    playRound(playerSelection, computerSelection);
-}
-
-for (let i = 0; i < 5; i++) {
-    game();
-}

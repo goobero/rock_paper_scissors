@@ -66,6 +66,11 @@ function score(playerScore, computerScore) {
         console.log("you are the loser :\( your score is " + playerScore, "and the computer's score is " + computerScore);
     }
 }
+
+function resetChoices() {
+    getComputerChoice();
+    getPlayerChoice();
+}
     
 /*
 
@@ -84,6 +89,7 @@ function game() {
     for (let i = 0; i < 5; i++) {
         playRound(playerSelection, computerSelection);
         score(playerScore, computerScore);
+        resetChoices();
     }
 }
 

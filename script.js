@@ -16,3 +16,8 @@ Call the playRound function
 
 */
 
+const choice = ["rock", "paper", "scissors"];
+
+computerSelection = function getComputerChoice() {
+    return choice[Math.floor(Math.random() * choice.length)];
+}

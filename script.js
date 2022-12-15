@@ -30,11 +30,10 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
     let userInput = prompt("rock, paper, or scissors?");
-    userInput = userInput.toLowerCase();
+    return userInput = userInput.toLowerCase();
 }
 
 function playRound (playerSelection,computerSelection) {
-    getComputerChoice();
     if (playerSelection === computerSelection) {
         console.log("it's a tie!");
     } else if (playerSelection === "rock" && computerSelection === "paper") {
@@ -59,6 +58,7 @@ function playRound (playerSelection,computerSelection) {
 }
 
 playRound(playerSelection, computerSelection);
+
 score(playerScore, computerScore);
 
 function score(playerScore, computerScore) {
@@ -81,10 +81,9 @@ Keep score of wins/losses at the end of each round
 
 Return a string displaying who the winner or loser is after the 5 rounds end
 
-*/
-
 function game() {
     for (i = 0; i < 5; i++);
     playRound();
 }
 
+*/

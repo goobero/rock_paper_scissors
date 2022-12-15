@@ -19,15 +19,18 @@ Call the playRound function
 const choice = ["rock", "paper", "scissors"];
 
 let computerSelection = getComputerChoice();
-
-let playerSelection = prompt("rock, paper, or scissors?");
-playerSelection = playerSelection.toLowerCase();
+let playerSelection = getPlayerChoice();
 
 let playerScore = 0;
 let computerScore = 0;
 
 function getComputerChoice() {
     return choice[Math.floor(Math.random() * choice.length)];
+}
+
+function getPlayerChoice() {
+    let userInput = prompt("rock, paper, or scissors?");
+    userInput = userInput.toLowerCase();
 }
 
 function playRound (playerSelection,computerSelection) {
@@ -79,3 +82,9 @@ Keep score of wins/losses at the end of each round
 Return a string displaying who the winner or loser is after the 5 rounds end
 
 */
+
+function game() {
+    for (i = 0; i < 5; i++);
+    playRound();
+}
+

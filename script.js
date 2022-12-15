@@ -23,6 +23,8 @@ let computerSelection = getComputerChoice();
 let playerSelection = prompt("rock, paper, or scissors?");
 playerSelection = playerSelection.toLowerCase();
 
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     return choice[Math.floor(Math.random() * choice.length)];
@@ -31,28 +33,47 @@ function getComputerChoice() {
 function playRound (playerSelection,computerSelection) {
     getComputerChoice();
     if (playerSelection === computerSelection) {
-        return "it's a tie!";
+        console.log("it's a tie!");
     } else if (playerSelection === "rock" && computerSelection === "paper") {
-        return "you lose! paper beats rock";
+        console.log("you lose! paper beats rock");
+        return computerScore += 1;
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return "you win! rock beats scissors";
+        console.log("you win! rock beats scissors");
+        return playerScore += 1;
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return "you win! paper beats rock";
+        console.log("you win! paper beats rock");
+        return playerScore += 1;
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        return "you lose! scissors beat paper";
+        console.log("you lose! scissors beat paper");
+        return computerScore += 1;
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        return "you lose! rock beats scissor";
+        console.log("you lose! rock beats scissor");
+        return computerScore += 1;
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return "you win! scissor beats paper";
+        console.log("you win! scissor beats paper");
+        return playerScore += 1;
     }
 }
 
+console.log(playRound(playerSelection, computerSelection));
+
+/*
+
+Declare a function called game()
+
+Call the playRound(userSelection, computerSelection) function inside the game() function to play a 5 round game
+
+Keep score of wins/losses at the end of each round
+
+Return a string displaying who the winner or loser is after the 5 rounds end
+
+*/
+
+
 function game() {
-    console.log(playRound(playerSelection, computerSelection));
+    playRound(playerSelection, computerSelection);
 }
 
 for (let i = 0; i < 5; i++) {
     game();
 }
-
-game();

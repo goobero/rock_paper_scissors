@@ -1,18 +1,33 @@
 /* 
+Initialise choices array: ["rock", "paper", "scissors"]
+Initiailse playerScore, computerScore variables with a value of 0
+Declaire/initialise playerSelection and computerSelection variables
 
-Declare a function called getComputerChoice that makes the computer randomly return one of the following strings: rock, paper, scissors
+Declare a function called getComputerChoice()
+    randomly return: "rock", "paper", "scissors"
 
-Store computer choice in a constant variable named computerSelection
+Store computer choice in a constant variable named computerSelection()
 
 Prompt user input to choose from one of the strings: rock, paper, or scissors
 
-Store the input in a constant variable named playerSelection and change it to .lowerCase()
+Store the input in a variable named playerSelection and change it to .lowerCase()
 
-Declare a function called playRound (that takes computerSelection and userSelection as parameters) that plays one round of the game
+Declare playRound(playerSelection, computerSelection that plays one round of the game
+    if playerSelection or computerSelection beats one or the other
+    print win/loss message to console
+    increment playerScore/computerScore by one depdending on win/loss outcomes
 
-Return a string that declares the winner of the round where paper beats rock, rock beats scissors, and scissors beat paper. e.g. "You Lose! Paper beats rock" 
+Declare getScore() function
+    if computerScore is more than playerScore, or vice versa
+        print score and whoever is the winner/loser message
 
-Call the playRound function
+Declare game() function to play five rounds
+    for (i = 0; i < 5; i++)
+        Call getComputerChoice() to reset computerSelection for new round
+        Prompt user input to reset playerSelection for new round
+        playRound()
+
+Call getScore()
 
 */
 

@@ -23,7 +23,7 @@ Declare getScore() function
 
 Declare game() function to play five rounds
     for (i = 0; i < 5; i++)
-        Call getComputerChoice() to reset computerSelection for new round
+        computerSelection = getComputerChoice() to reset computerSelection for new round
         Prompt user input to reset playerSelection for new round
         playRound()
 
@@ -38,12 +38,13 @@ let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
-playerSelection = prompt("rock, paper, or scissors?");
-playerSelection = playerSelection.toLowerCase();
+// Returns random choice of rock, paper, scissors by computer
 
 function getComputerChoice() {
     return choice[Math.floor(Math.random() * choice.length)];
 }
+
+// Plays one round
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
@@ -53,48 +54,40 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")) {
         console.log(`you win! ${playerSelection} beats ${computerSelection}`);
+        return playerScore += 1;
 
     } else if ((playerSelection === "rock" && computerSelection === "paper") ||
-    (playerSelection === "scissors" && computerselection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "rock") ||
     (playerSelection === "paper" && computerSelection === "scissors")) {
         console.log(`you lose! ${computerSelection} beats ${playerSelection}`);
+        return computerScore += 1;
     }
-    
+}
 
-function score(playerScore, computerScore) {
+// Returns final score for player and computer (winner or loser)
+
+function getScore(playerScore, computerScore) {
     if (playerScore === computerScore) {
-        console.log("you tied! your score is " + playerScore, "and the computer's score is " + computerScore);
+        console.log(`you tied! your score is ${playerScore}, and the computer's score is ${computerScore}`);
+
     } else if (playerScore > computerScore) {
-        console.log("you are the winner! :\) your score is " + playerScore, "and the computer's score is " + computerScore);
+        console.log(`you are the winner! :\( your score is ${playerScore}, and the computer\'s score is ${computerScore}`);
+
     } else {
-        console.log("you are the loser :\( your score is " + playerScore, "and the computer's score is " + computerScore);
+        console.log(`you are the loser :\( your score is ${playerScore}, and the computer's score is ${computerScore}`);
     }
 }
 
-function resetChoices() {
-    getComputerChoice();
-    getPlayerChoice();
-}
-    
-/*
-
-Declare a function called game()
-
-Call the playRound(userSelection, computerSelection) function inside the game() function to play a 5 round game
-
-Keep score of wins/losses at the end of each round
-
-Return a string displaying who the winner or loser is after the 5 rounds end
-
-*/
-
+// Plays 5 rounds, resets player and computer choices each round
 
 function game() {
     for (let i = 0; i < 5; i++) {
+        computerSelection = getComputerChoice();
+        playerSelection = prompt("rock, scissors, or paper?");
+        playerSelection = playerSelection.toLowerCase();
         playRound(playerSelection, computerSelection);
-        score(playerScore, computerScore);
-        resetChoices();
     }
 }
 
 game();
+getScore(playerScore, computerScore);

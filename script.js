@@ -31,6 +31,23 @@ Call getScore()
 
 */
 
+const rock_button = document.createElement('button');
+rock_button.innerText = 'rock';
+document.body.appendChild(rock_button);
+
+const scissor_button = document.createElement('button');
+scissor_button.innerText = 'scissors';
+document.body.appendChild(scissor_button);
+
+const paper_button = document.createElement('button');
+paper_button.innerText= 'paper';
+document.body.appendChild(paper_button);
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', playRound)
+});
+
 const choice = ["rock", "paper", "scissors"];
 
 let computerSelection = getComputerChoice();
@@ -81,13 +98,16 @@ function getScore(playerScore, computerScore) {
 // Plays 5 rounds, resets player and computer choices each round
 
 function game() {
-    for (let i = 0; i < 5; i++) {
+    //for (let i = 0; i < 5; i++) {
         computerSelection = getComputerChoice();
         playerSelection = prompt("rock, scissors, or paper?");
         playerSelection = playerSelection.toLowerCase();
         playRound(playerSelection, computerSelection);
-    }
+    // }
 }
 
 game();
 getScore(playerScore, computerScore);
+
+
+

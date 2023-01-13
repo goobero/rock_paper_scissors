@@ -31,29 +31,40 @@ Call getScore()
 
 */
 
-const rock_button = document.createElement('button');
-rock_button.innerText = 'rock';
-document.body.appendChild(rock_button);
-
-const scissor_button = document.createElement('button');
-scissor_button.innerText = 'scissors';
-document.body.appendChild(scissor_button);
-
-const paper_button = document.createElement('button');
-paper_button.innerText= 'paper';
-document.body.appendChild(paper_button);
-
-const buttons = document.querySelectorAll('button');
-buttons.forEach((button) => {
-    button.addEventListener('click', playRound)
-});
-
 const choice = ["rock", "paper", "scissors"];
 
 let computerSelection = getComputerChoice();
 let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
+
+const rockButton = document.createElement('button');
+rockButton.textContent = 'rock';
+document.body.appendChild(rockButton);
+document.querySelector('rockButton');
+rockButton.setAttribute('value', 'rock');
+
+const scissorButton = document.createElement('button');
+scissorButton.textContent = 'scissors';
+document.body.appendChild(scissorButton);
+document.querySelector('scissorButton');
+scissorButton.setAttribute('value', 'scissors');
+
+const paperButton = document.createElement('button');
+paperButton.textContent= 'paper';
+document.body.appendChild(paperButton);
+document.querySelector('paperButton');
+paperButton.setAttribute('value', 'paper');
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        playerSelection = event.target.value;
+        game();
+        getScore(playerScore, computerScore)
+    })
+})
+
 
 // Returns random choice of rock, paper, scissors by computer
 
@@ -100,14 +111,14 @@ function getScore(playerScore, computerScore) {
 function game() {
     //for (let i = 0; i < 5; i++) {
         computerSelection = getComputerChoice();
-        playerSelection = prompt("rock, scissors, or paper?");
-        playerSelection = playerSelection.toLowerCase();
+        // playerSelection = prompt("rock, scissors, or paper?");
+        // playerSelection = playerSelection.toLowerCase();
         playRound(playerSelection, computerSelection);
     // }
 }
 
-game();
-getScore(playerScore, computerScore);
+// game();
+// getScore(playerScore, computerScore);
 
 
 

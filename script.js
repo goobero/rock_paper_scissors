@@ -49,13 +49,6 @@ buttonContainer.appendChild(rockButton);
 document.querySelector('rockButton');
 rockButton.setAttribute('value', 'rock');
 
-const scissorButton = document.createElement('button');
-scissorButton.classList.add('button');
-scissorButton.textContent = 'scissors';
-buttonContainer.appendChild(scissorButton);
-document.querySelector('scissorButton');
-scissorButton.setAttribute('value', 'scissors');
-
 const paperButton = document.createElement('button');
 paperButton.classList.add('button');
 paperButton.textContent= 'paper';
@@ -63,13 +56,24 @@ buttonContainer.appendChild(paperButton);
 document.querySelector('paperButton');
 paperButton.setAttribute('value', 'paper');
 
+const scissorButton = document.createElement('button');
+scissorButton.classList.add('button');
+scissorButton.textContent = 'scissors';
+buttonContainer.appendChild(scissorButton);
+document.querySelector('scissorButton');
+scissorButton.setAttribute('value', 'scissors');
+
 const resultsDisplayRound = document.createElement('div');
 resultsDisplayRound.classList.add('results');
 document.body.appendChild(resultsDisplayRound);
 
+
 const resultsDisplayPoints = document.createElement('div');
 document.body.appendChild(resultsDisplayPoints);
 resultsDisplayPoints.classList.add('results');
+
+const winner = document.createElement('winner');
+document.body.appendChild(winner);
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
@@ -80,13 +84,19 @@ buttons.forEach((button) => {
         if ((playerScore === 5) || (computerScore === 5)) {
             endGame();
         }
-        
+        tellWinner();
     })
 });
 
-function endGame(playerScore, computerScore) {
+function endGame() {
     buttons.forEach((button) => button.disabled = true)
+    if ((playerScore > computerScore)) {
+        winner.textContent = "you win!"
+    } else {
+        winner.textContent = "computer wins!"
+    }
 }
+
 
 // Returns random choice of rock, paper, scissors by computer
 

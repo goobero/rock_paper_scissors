@@ -43,22 +43,33 @@ buttonContainer.classList.add("buttondiv");
 document.body.appendChild(buttonContainer);
 
 const rockButton = document.createElement('button');
+rockButton.classList.add('button');
 rockButton.textContent = 'rock';
 buttonContainer.appendChild(rockButton);
 document.querySelector('rockButton');
 rockButton.setAttribute('value', 'rock');
 
 const scissorButton = document.createElement('button');
+scissorButton.classList.add('button');
 scissorButton.textContent = 'scissors';
 buttonContainer.appendChild(scissorButton);
 document.querySelector('scissorButton');
 scissorButton.setAttribute('value', 'scissors');
 
 const paperButton = document.createElement('button');
+paperButton.classList.add('button');
 paperButton.textContent= 'paper';
 buttonContainer.appendChild(paperButton);
 document.querySelector('paperButton');
 paperButton.setAttribute('value', 'paper');
+
+const resultsDisplayRound = document.createElement('div');
+resultsDisplayRound.classList.add('results');
+document.body.appendChild(resultsDisplayRound);
+
+const resultsDisplayPoints = document.createElement('div');
+document.body.appendChild(resultsDisplayPoints);
+resultsDisplayPoints.classList.add('results');
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
@@ -66,17 +77,16 @@ buttons.forEach((button) => {
         playerSelection = event.target.value;
         game();
         getScore(playerScore, computerScore)
+        if ((playerScore === 5) || (computerScore === 5)) {
+            endGame();
+        }
+        
     })
 });
 
-const resultsDisplayRound = document.createElement('div');
-document.body.appendChild(resultsDisplayRound);
-resultsDisplayRound.setAttribute('style', 'border: solid black 2px;');
-
-const resultsDisplayPoints = document.createElement('div');
-document.body.appendChild(resultsDisplayPoints);
-resultsDisplayPoints.setAttribute('style', 'border: solid black 2px;');
-
+function endGame(playerScore, computerScore) {
+    buttons.forEach((button) => button.disabled = true)
+}
 
 // Returns random choice of rock, paper, scissors by computer
 
@@ -108,13 +118,13 @@ function playRound(playerSelection, computerSelection) {
 
 function getScore(playerScore, computerScore) {
     if (playerScore === computerScore) {
-        resultsDisplayPoints.textContent = (`you tied! your score is ${playerScore}, and the computer's score is ${computerScore}`);
+        resultsDisplayPoints.textContent = (`your score: ${playerScore} computer score: ${computerScore}`);
 
     } else if (playerScore > computerScore) {
-        resultsDisplayPoints.textContent = (`you are the winner! :\( your score is ${playerScore}, and the computer\'s score is ${computerScore}`);
+        resultsDisplayPoints.textContent = (`your score: ${playerScore} computer score: ${computerScore}`);
 
     } else {
-        resultsDisplayPoints.textContent = (`you are the loser :\( your score is ${playerScore}, and the computer's score is ${computerScore}`);
+        resultsDisplayPoints.textContent = (`your score: ${playerScore} computer score: ${computerScore}`);
     }
 }
 
@@ -126,7 +136,7 @@ function game() {
         // playerSelection = prompt("rock, scissors, or paper?");
         // playerSelection = playerSelection.toLowerCase();
         playRound(playerSelection, computerSelection);
-    // }
+    //}
 }
 
 // game();

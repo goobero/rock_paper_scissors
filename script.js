@@ -38,21 +38,25 @@ let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
+const buttonContainer = document.createElement('div');
+buttonContainer.classList.add("buttondiv");
+document.body.appendChild(buttonContainer);
+
 const rockButton = document.createElement('button');
 rockButton.textContent = 'rock';
-document.body.appendChild(rockButton);
+buttonContainer.appendChild(rockButton);
 document.querySelector('rockButton');
 rockButton.setAttribute('value', 'rock');
 
 const scissorButton = document.createElement('button');
 scissorButton.textContent = 'scissors';
-document.body.appendChild(scissorButton);
+buttonContainer.appendChild(scissorButton);
 document.querySelector('scissorButton');
 scissorButton.setAttribute('value', 'scissors');
 
 const paperButton = document.createElement('button');
 paperButton.textContent= 'paper';
-document.body.appendChild(paperButton);
+buttonContainer.appendChild(paperButton);
 document.querySelector('paperButton');
 paperButton.setAttribute('value', 'paper');
 
@@ -63,7 +67,15 @@ buttons.forEach((button) => {
         game();
         getScore(playerScore, computerScore)
     })
-})
+});
+
+const resultsDisplayRound = document.createElement('div');
+document.body.appendChild(resultsDisplayRound);
+resultsDisplayRound.setAttribute('style', 'border: solid black 2px;');
+
+const resultsDisplayPoints = document.createElement('div');
+document.body.appendChild(resultsDisplayPoints);
+resultsDisplayPoints.setAttribute('style', 'border: solid black 2px;');
 
 
 // Returns random choice of rock, paper, scissors by computer
@@ -76,18 +88,18 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        console.log(`it's a tie, you both chose ${playerSelection}`);
+        resultsDisplayRound.textContent = (`it's a tie, you both chose ${playerSelection}`);
 
     } else if ((playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")) {
-        console.log(`you win! ${playerSelection} beats ${computerSelection}`);
+        resultsDisplayRound.textContent = (`you win! ${playerSelection} beats ${computerSelection}`);
         return playerScore += 1;
 
     } else if ((playerSelection === "rock" && computerSelection === "paper") ||
     (playerSelection === "scissors" && computerSelection === "rock") ||
     (playerSelection === "paper" && computerSelection === "scissors")) {
-        console.log(`you lose! ${computerSelection} beats ${playerSelection}`);
+        resultsDisplayRound.textContent = (`you lose! ${computerSelection} beats ${playerSelection}`);
         return computerScore += 1;
     }
 }
@@ -96,20 +108,20 @@ function playRound(playerSelection, computerSelection) {
 
 function getScore(playerScore, computerScore) {
     if (playerScore === computerScore) {
-        console.log(`you tied! your score is ${playerScore}, and the computer's score is ${computerScore}`);
+        resultsDisplayPoints.textContent = (`you tied! your score is ${playerScore}, and the computer's score is ${computerScore}`);
 
     } else if (playerScore > computerScore) {
-        console.log(`you are the winner! :\( your score is ${playerScore}, and the computer\'s score is ${computerScore}`);
+        resultsDisplayPoints.textContent = (`you are the winner! :\( your score is ${playerScore}, and the computer\'s score is ${computerScore}`);
 
     } else {
-        console.log(`you are the loser :\( your score is ${playerScore}, and the computer's score is ${computerScore}`);
+        resultsDisplayPoints.textContent = (`you are the loser :\( your score is ${playerScore}, and the computer's score is ${computerScore}`);
     }
 }
 
 // Plays 5 rounds, resets player and computer choices each round
 
 function game() {
-    //for (let i = 0; i < 5; i++) {
+    // for (let i = 0; i < 5; i++) {
         computerSelection = getComputerChoice();
         // playerSelection = prompt("rock, scissors, or paper?");
         // playerSelection = playerSelection.toLowerCase();

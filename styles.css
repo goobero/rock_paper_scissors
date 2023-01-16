@@ -16,8 +16,9 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: 'Fredoka One', cursive;
-    gap: 20px;
     font-size: 20px;
+    gap: 10px;
+    background-color: rgb(235, 220, 220);
 }
 
 .buttons {
@@ -27,12 +28,13 @@ body {
 
 button {
     font-family: 'Fredoka One', cursive;
-    font-size: 20px;
+    font-size: 25px;
     background-color: pink;
 }
 
 #reset {
     background-color: lightblue;
+    flex: auto;
 }
 header {
     font-size: 30px;
@@ -41,16 +43,36 @@ header {
 
 .scoreboardContainer {
     display: flex;
-    gap: 20px;
+    gap: 50px;
 }
 
 .playerScoreboard,
 .computerScoreboard {
     border: 2px solid black;
     text-align: center;
+    padding: 20px;
+    width: 180px;
+    height: 110px;
+    background-color: white;
 }
 
-img {
-    width: 100px;
-    height: 100px;
+header {
+    margin-top: 20px;
+}
+.content {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instructions {
+    margin: 20px;
+}
+#roundWinner {
+    margin: 15px;
+}
+
+#finalWinner {
+    margin: 0 0 30px 0;
 }

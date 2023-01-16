@@ -44,7 +44,7 @@ const winner = document.getElementById('finalWinner');
 
 reset.addEventListener('click', () => location.reload());
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('div.buttons > button');
 buttons.forEach((button) => {
     button.addEventListener('click', (event) => {
         playerSelection = event.target.value;
@@ -55,8 +55,6 @@ buttons.forEach((button) => {
         }
     })
 });
-
-
 
 // Returns random choice of rock, paper, scissors by computer
 
@@ -105,8 +103,9 @@ function game() {
 function endGame() {
     buttons.forEach((button) => button.disabled = true)
     if ((playerScore > computerScore)) {
-        winner.textContent = "you win!"
+        winner.textContent = "*~*~*~*you win! woohoo*~*~*~*"
     } else {
-        winner.textContent = "computer wins!"
+        winner.textContent = "computer wins! better luck next time..."
     }
+    reset.textContent = "play again? :P"
 }

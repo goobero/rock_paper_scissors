@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    padding: 70px;
 }
 
 .results {
@@ -14,9 +15,42 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
+    font-family: 'Fredoka One', cursive;
+    gap: 20px;
+    font-size: 20px;
 }
 
-.button {
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    font-family: 'Fredoka One', cursive;
     font-size: 20px;
+    background-color: pink;
+}
+
+#reset {
+    background-color: lightblue;
+}
+header {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.scoreboardContainer {
+    display: flex;
+    gap: 20px;
+}
+
+.playerScoreboard,
+.computerScoreboard {
+    border: 2px solid black;
+    text-align: center;
+}
+
+img {
+    width: 100px;
+    height: 100px;
 }

@@ -38,42 +38,11 @@ let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
-const buttonContainer = document.createElement('div');
-buttonContainer.classList.add("buttondiv");
-document.body.appendChild(buttonContainer);
+const reset = document.getElementById('reset');
+const roundWinner = document.getElementById('roundWinner');
+const winner = document.getElementById('finalWinner');
 
-const rockButton = document.createElement('button');
-rockButton.classList.add('button');
-rockButton.textContent = 'rock';
-buttonContainer.appendChild(rockButton);
-document.querySelector('rockButton');
-rockButton.setAttribute('value', 'rock');
-
-const paperButton = document.createElement('button');
-paperButton.classList.add('button');
-paperButton.textContent= 'paper';
-buttonContainer.appendChild(paperButton);
-document.querySelector('paperButton');
-paperButton.setAttribute('value', 'paper');
-
-const scissorButton = document.createElement('button');
-scissorButton.classList.add('button');
-scissorButton.textContent = 'scissors';
-buttonContainer.appendChild(scissorButton);
-document.querySelector('scissorButton');
-scissorButton.setAttribute('value', 'scissors');
-
-const resultsDisplayRound = document.createElement('div');
-resultsDisplayRound.classList.add('results');
-document.body.appendChild(resultsDisplayRound);
-
-
-const resultsDisplayPoints = document.createElement('div');
-document.body.appendChild(resultsDisplayPoints);
-resultsDisplayPoints.classList.add('results');
-
-const winner = document.createElement('winner');
-document.body.appendChild(winner);
+reset.addEventListener('click', () => location.reload());
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
@@ -84,18 +53,9 @@ buttons.forEach((button) => {
         if ((playerScore === 5) || (computerScore === 5)) {
             endGame();
         }
-        tellWinner();
     })
 });
 
-function endGame() {
-    buttons.forEach((button) => button.disabled = true)
-    if ((playerScore > computerScore)) {
-        winner.textContent = "you win!"
-    } else {
-        winner.textContent = "computer wins!"
-    }
-}
 
 
 // Returns random choice of rock, paper, scissors by computer
@@ -108,34 +68,28 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        resultsDisplayRound.textContent = (`it's a tie, you both chose ${playerSelection}`);
+        roundWinner.textContent = (`it's a tie, you both chose ${playerSelection}`);
 
     } else if ((playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")) {
-        resultsDisplayRound.textContent = (`you win! ${playerSelection} beats ${computerSelection}`);
+        roundWinner.textContent = (`you win! ${playerSelection} beats ${computerSelection}`);
         return playerScore += 1;
 
     } else if ((playerSelection === "rock" && computerSelection === "paper") ||
     (playerSelection === "scissors" && computerSelection === "rock") ||
     (playerSelection === "paper" && computerSelection === "scissors")) {
-        resultsDisplayRound.textContent = (`you lose! ${computerSelection} beats ${playerSelection}`);
+        roundWinner.textContent = (`you lose! ${computerSelection} beats ${playerSelection}`);
         return computerScore += 1;
     }
 }
 
-// Returns final score for player and computer (winner or loser)
+// Displays scores for player and computer on scoreboard
 
 function getScore(playerScore, computerScore) {
-    if (playerScore === computerScore) {
-        resultsDisplayPoints.textContent = (`your score: ${playerScore} computer score: ${computerScore}`);
-
-    } else if (playerScore > computerScore) {
-        resultsDisplayPoints.textContent = (`your score: ${playerScore} computer score: ${computerScore}`);
-
-    } else {
-        resultsDisplayPoints.textContent = (`your score: ${playerScore} computer score: ${computerScore}`);
-    }
+    const scoreDisplay = document.getElementsByClassName('score');
+    scoreDisplay[0].textContent = playerScore;
+    scoreDisplay[1].textContent = computerScore;
 }
 
 // Plays 5 rounds, resets player and computer choices each round
@@ -148,9 +102,11 @@ function game() {
         playRound(playerSelection, computerSelection);
     //}
 }
-
-// game();
-// getScore(playerScore, computerScore);
-
-
-
+function endGame() {
+    buttons.forEach((button) => button.disabled = true)
+    if ((playerScore > computerScore)) {
+        winner.textContent = "you win!"
+    } else {
+        winner.textContent = "computer wins!"
+    }
+}

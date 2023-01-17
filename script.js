@@ -44,7 +44,7 @@ const winner = document.getElementById('finalWinner');
 
 reset.addEventListener('click', () => location.reload());
 
-const buttons = document.querySelectorAll('div.buttons > button');
+const buttons = document.querySelectorAll('div.buttons-container > button');
 buttons.forEach((button) => {
     button.addEventListener('click', (event) => {
         playerSelection = event.target.value;

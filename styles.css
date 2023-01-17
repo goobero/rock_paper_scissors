@@ -1,15 +1,11 @@
-.buttondiv {
+.buttons-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 20px;
-    padding: 70px;
 }
 
 .results {
     text-align: center;
 }
-
 
 body {
     display: flex;
@@ -19,11 +15,6 @@ body {
     font-size: 20px;
     gap: 10px;
     background-color: rgb(235, 220, 220);
-}
-
-.buttons {
-    display: flex;
-    gap: 20px;
 }
 
 button {
@@ -54,12 +45,14 @@ header {
     width: 180px;
     height: 110px;
     background-color: white;
+    flex: 0 1 auto;
 }
 
 header {
     margin-top: 20px;
 }
-.content {
+
+.content-container {
     margin: 50px;
     display: flex;
     flex-direction: column;
@@ -71,8 +64,15 @@ header {
 }
 #roundWinner {
     margin: 15px;
+    text-align: center;
 }
 
 #finalWinner {
     margin: 0 0 30px 0;
+    text-align: center;
+}
+
+.score-container {
+    display: flex;
+    flex-direction: column;
 }

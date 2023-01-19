@@ -31,30 +31,17 @@ Call getScore()
 
 */
 
-const choice = ["rock", "paper", "scissors"];
-
 let computerSelection = getComputerChoice();
 let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
-const reset = document.getElementById('reset');
+const choice = ["rock", "paper", "scissors"];
 const roundWinner = document.getElementById('roundWinner');
 const winner = document.getElementById('finalWinner');
+const reset = document.getElementById('reset');
 
 reset.addEventListener('click', () => location.reload());
-
-const buttons = document.querySelectorAll('div.buttons-container > button');
-buttons.forEach((button) => {
-    button.addEventListener('click', (event) => {
-        playerSelection = event.target.value;
-        game();
-        getScore(playerScore, computerScore)
-        if ((playerScore === 5) || (computerScore === 5)) {
-            endGame();
-        }
-    })
-});
 
 // Returns random choice of rock, paper, scissors by computer
 
@@ -109,3 +96,15 @@ function endGame() {
     }
     reset.textContent = "play again? :P"
 }
+
+const buttons = document.querySelectorAll('div.buttons-container > button');
+buttons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        playerSelection = event.target.value;
+        game();
+        getScore(playerScore, computerScore)
+        if ((playerScore === 5) || (computerScore === 5)) {
+            endGame();
+        }
+    })
+});
